@@ -95,19 +95,6 @@ class Budget
     def self.scoped_filter(params, current_filter)
       budget  = Budget.find_by(slug: params[:budget_id]) || Budget.find_by(id: params[:budget_id])
       results = Investment.where(budget_id: budget.id)
-<<<<<<< HEAD
-      results = limit_results(results, budget, params)      if params[:max_per_heading].present?
-      results = results.where(group_id: params[:group_id])  if params[:group_id].present?
-      results = results.by_heading(params[:heading_id])     if params[:heading_id].present?
-      results = results.by_admin(params[:administrator_id]) if params[:administrator_id].present?
-      results = results.by_tag(params[:tag_name])           if params[:tag_name].present?
-      results = results.by_valuator(params[:valuator_id])   if params[:valuator_id].present?
-      results = results.send(current_filter)                if current_filter.present?
-      results.includes(:heading, :group, :budget, administrator: :user, valuators: :user)
-    end
-
-    def self.limit_results(results, budget, params)
-=======
 
       results = limit_results(budget, params, results)              if params[:max_per_heading].present?
       results = results.where(group_id: params[:group_id])          if params[:group_id].present?
@@ -127,20 +114,12 @@ class Budget
     end
 
     def self.limit_results(budget, params, results)
->>>>>>> e5c73d8f0... Add advanced filters for Admin::Budget::Investment
       max_per_heading = params[:max_per_heading].to_i
       return results if max_per_heading <= 0
 
       ids = []
-<<<<<<< HEAD
-      if max_per_heading > 0
-        budget.headings.pluck(:id).each do |hid|
-          ids += Investment.where(heading_id: hid).order(confidence_score: :desc).limit(max_per_heading).pluck(:id)
-        end
-=======
       budget.headings.pluck(:id).each do |hid|
         ids += Investment.where(heading_id: hid).order(confidence_score: :desc).limit(max_per_heading).pluck(:id)
->>>>>>> e5c73d8f0... Add advanced filters for Admin::Budget::Investment
       end
 
       results.where("budget_investments.id IN (?)", ids)
