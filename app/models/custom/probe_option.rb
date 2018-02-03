@@ -53,4 +53,7 @@ class ProbeOption < ActiveRecord::Base
     false
   end
 
+  def url
+    probe_probe_option_path(probe_id: probe.codename, id: id)
+  end
 end

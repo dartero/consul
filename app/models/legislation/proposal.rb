@@ -150,6 +150,10 @@ class Legislation::Proposal < ActiveRecord::Base
     proposal_type == 'question'
   end
 
+  def url
+    legislation_process_proposal_path(legislation_process_id, self)
+  end
+
   protected
 
     def set_responsible_name

@@ -41,4 +41,8 @@ class Legislation::Question < ActiveRecord::Base
   def comments_open?
     process.debate_phase.open?
   end
+
+  def url
+    legislation_process_question_path(process, self)
+  end
 end

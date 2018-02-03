@@ -16,4 +16,7 @@ class Topic < ActiveRecord::Base
   scope :sort_by_oldest, -> { order(created_at: :asc) }
   scope :sort_by_most_commented, -> { reorder(comments_count: :desc) }
 
+  def url
+    community_topic_path(community, self)
+  end
 end

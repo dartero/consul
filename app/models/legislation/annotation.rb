@@ -55,4 +55,8 @@ class Legislation::Annotation < ActiveRecord::Base
   def weight
     comments_count + comments.sum(:cached_votes_total)
   end
+
+  def url
+    legislation_process_draft_version_annotation_path(draft_version.process, draft_version, self)
+  end
 end
