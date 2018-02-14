@@ -7,7 +7,7 @@ gem 'acts_as_votable', '~> 0.11.1'
 gem 'ahoy_matey', '~> 1.6.0'
 gem 'ancestry', '~> 3.0.1'
 gem 'browser', '~> 2.5.2'
-gem 'cancancan', '~> 2.1.2'
+gem 'cancancan', '~> 2.1.3'
 gem 'ckeditor', '~> 4.2.3'
 gem 'cocoon', '~> 1.2.9'
 gem 'coffee-rails', '~> 4.2.1'
@@ -22,7 +22,7 @@ gem 'foundation_rails_helper', '~> 2.0.0'
 gem 'graphiql-rails', '~> 1.4.1'
 gem 'graphql', '~> 1.7.8'
 gem 'groupdate', '~> 3.2.0'
-gem 'initialjs-rails', '~> 0.2.0.5'
+gem 'initialjs-rails', '~> 0.2.0.6'
 gem 'invisible_captcha', '~> 0.10.0'
 gem 'jquery-fileupload-rails'
 gem 'jquery-rails', '~> 4.3.1'
@@ -49,7 +49,7 @@ gem 'social-share-button', '~> 1.1'
 gem 'sprockets', '~> 3.7.1'
 gem 'turbolinks', '~> 2.5.3'
 gem 'turnout', '~> 2.4.0'
-gem 'uglifier', '~> 4.1.2'
+gem 'uglifier', '~> 4.1.6'
 gem 'unicorn', '~> 5.4.0'
 gem 'whenever', '~> 0.10.0', require: false
 
@@ -59,14 +59,14 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :test do
-  gem 'bullet', '~> 5.7.0'
+  gem 'bullet', '~> 5.7.2'
   gem 'byebug', '~> 10.0.0'
   gem 'factory_bot_rails', '~> 4.8.2'
   gem 'faker', '~> 1.8.7'
   gem 'i18n-tasks', '~> 0.9.20'
   gem 'knapsack_pro', '~> 0.53.0'
   gem 'launchy', '~> 2.4.3'
-  gem 'letter_opener_web', '~> 1.3.2'
+  gem 'letter_opener_web', '~> 1.3.3'
   gem 'quiet_assets', '~> 1.1.0'
   gem 'spring', '~> 2.0.1'
   gem 'spring-commands-rspec', '~> 1.0.4'
@@ -88,7 +88,7 @@ group :development do
   gem 'capistrano3-delayed-job', '~> 1.7.3'
   gem 'mdl', '~> 0.4.0', require: false
   gem 'rubocop', '~> 0.52.1', require: false
-  gem 'rubocop-rspec', '~> 1.22.1', require: false
+  gem 'rubocop-rspec', '~> 1.22.2', require: false
   gem 'rvm1-capistrano3', '~> 1.4.0', require: false
   gem 'scss_lint', '~> 0.54.0', require: false
   gem 'web-console', '~> 3.3.0'
