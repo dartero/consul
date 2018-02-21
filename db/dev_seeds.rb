@@ -33,5 +33,6 @@ require_relative 'dev_seeds/legislation_processes'
 require_relative 'dev_seeds/newsletters'
 require_relative 'dev_seeds/forums'
 require_relative 'dev_seeds/probe_options'
+require_relative 'dev_seeds/admin_notifications'
 
 log "All dev seeds created successfuly 👍"

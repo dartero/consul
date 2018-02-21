@@ -1,15 +1,23 @@
-<li id="<%= dom_id(notification) %>" class="notification">
-  <% if notification.notifiable_available? %>
-    <%= link_to notification do %>
-      <p>
-        <em>
-          <%= t("notifications.index.#{notification.notifiable_action}",
-                count: notification.counter) %>
-        </em>
-        <strong><%= notification.notifiable_title %></strong>
-      </p>
+<% title = local_assigns.fetch(:title, false) %>
+<% action = local_assigns.fetch(:action, false) %>
+<% link = local_assigns.fetch(:link, false) %>
+<% body = local_assigns.fetch(:body, false) %>
+<% notification = local_assigns.fetch(:notification, nil) %>
 
-      <p class="time"><%= l notification.timestamp, format: :datetime %></p>
+<li id="<%= dom_id(notification) if notification %>" class="notification">
+  <% if title %>
+    <% if link %>
+      <%= link_to link do %>
+        <%= render partial: '/notifications/notification_body', locals: { notification: notification,
+                                                                          timestamp: timestamp,
+                                                                          title: title,
+                                                                          body: body } %>
+      <% end %>
+    <% else %>
+      <%= render partial: '/notifications/notification_body', locals: { notification: notification,
+                                                                        timestamp: timestamp,
+                                                                        title: title,
+                                                                        body: body } %>
     <% end %>
   <% else %>
     <p>

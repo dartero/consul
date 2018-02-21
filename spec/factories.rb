@@ -1053,4 +1053,18 @@ LOREM_IPSUM
     sequence(:body)    { |n| "Body #{n}" }
   end
 
+  factory :admin_notification do
+    title 'Admin Notification title'
+    body 'Admin Notification body'
+    link  nil
+    segment_recipient 'all_users'
+    recipients_count nil
+    sent_at nil
+
+    trait :sent do
+      recipients_count User.all.count
+      sent_at Time.current
+    end
+  end
+
 end

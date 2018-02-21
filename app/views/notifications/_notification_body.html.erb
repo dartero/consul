@@ -1,0 +1,12 @@
+<p>
+  <% if notification && notification.notifiable_action %>
+    <em>
+      <%= t("notifications.index.#{notification.notifiable_action}", count: notification.counter) %>
+    </em>
+  <% end %>
+  <strong><%= title %></strong>
+  <% if body %>
+    <p><%= body %></p>
+  <% end %>
+</p>
+<p class="time"><%= l(timestamp, format: :datetime) %></p>
