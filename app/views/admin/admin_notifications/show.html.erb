@@ -1,0 +1,63 @@
+<%= back_link_to admin_admin_notifications_path %>
+
+<h2><%= t("admin.admin_notifications.show.section_title") %></h2>
+
+<% recipients_count = @admin_notification.valid_segment_recipient? ? @admin_notification.list_of_recipients.count : 0 %>
+
+<div class="small-12 column">
+  <div class="callout highlight">
+    <div class="row">
+      <div class="small-12 medium-6 column">
+        <strong><%= t("admin.admin_notifications.show.sent_at") %></strong><br>
+        <% if @admin_notification.draft? %>
+          <%= t("admin.admin_notifications.index.draft") %>
+        <% else %>
+          <%= l @admin_notification.sent_at.to_date %>
+        <% end %>
+      </div>
+      <div class="small-12 medium-6 column">
+        <strong><%= t("admin.admin_notifications.show.title") %></strong><br>
+        <%= @admin_notification.title %>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="small-12 medium-6 column">
+        <strong><%= t("admin.admin_notifications.show.body") %></strong><br>
+        <%= @admin_notification.body %>
+      </div>
+      <div class="small-12 medium-6 column">
+        <strong><%= t("admin.admin_notifications.show.link") %></strong><br>
+        <%= @admin_notification.link %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 column">
+        <strong><%= t("admin.admin_notifications.show.segment_recipient") %></strong><br>
+        <%= segment_name(@admin_notification.segment_recipient) %>
+        <%= t("admin.admin_notifications.show.affected_users", n: recipients_count) %>
+      </div>
+    </div>
+  </div>
+
+  <strong><%= t("admin.admin_notifications.show.body") %></strong>
+  <p class="help-text" id="phase-description-help-text">
+    <%= t("admin.admin_notifications.show.body_help_text") %>
+  </p>
+  <div class="admin_notification-body-content">
+    <% locals = { link: @admin_notification.link,
+                  title: @admin_notification.title,
+                  body: @admin_notification.body,
+                  timestamp: Time.current } %>
+    <%= render partial: '/notifications/notification', locals: locals %>
+  </div>
+</div>
+
+<% if @admin_notification.draft? && @admin_notification.valid_segment_recipient? %>
+  <%= link_to t("admin.admin_notifications.show.send"),
+              deliver_admin_admin_notification_path(@admin_notification),
+              "data-alert": t("admin.admin_notifications.show.send_alert", n: recipients_count),
+              method: :post,
+              id: "js-send-admin_notification-alert",
+              class: "button success" %>
+<% end %>

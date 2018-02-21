@@ -1128,5 +1128,6 @@ section "Creating legislation processes" do
 end
 
 require_relative 'dev_seeds/newsletters'
+require_relative 'dev_seeds/admin_notifications'
 
 log "All dev seeds created successfuly 👍"

@@ -35,6 +35,8 @@ class Notification < ActiveRecord::Base
       "proposal_notification"
     when "Comment"
       "replies_to"
+    when "AdminNotification"
+      nil
     else
       "comments_on"
     end

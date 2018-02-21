@@ -14,7 +14,16 @@
       </div>
 
       <ul class="no-bullet clear notifications-list">
-        <%= render @notifications %>
+        <% @notifications.each do |notification| %>
+          <% if notification.notifiable_available? %>
+            <% locals = { notification: notification,
+                          link: notification,
+                          title: notification.notifiable_title,
+                          body: notification.notifiable.try(:body),
+                          timestamp: notification.timestamp } %>
+          <% end %>
+          <%= render partial: '/notifications/notification', locals: locals || {} %>
+        <% end %>
       </ul>
     <% end %>
   </div>
