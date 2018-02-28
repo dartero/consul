@@ -1,0 +1,20 @@
+<div class="row margin-bottom">
+  <h3><%= link_to fork.name, fork_path(fork) %></h3>
+
+  <h4>Number of lines changed:</h4> 
+  <div><strong><%= fork.lines_diff %></strong></div>
+  <br/>
+
+  <h4>Number of files changed:</h4>
+  <div><strong><%= fork.files_changed.count %></strong></div>
+  <br/>
+
+  <h4>Last updated at</h4>
+  <div><strong><%= time_ago_in_words(fork.last_commit) %></strong></div>
+  <br/>
+
+  <div>
+    <%= link_to "See all changes in Github", fork.diff_url, target: :_blank %>
+  </div>
+  <br/><br/>
+</div>

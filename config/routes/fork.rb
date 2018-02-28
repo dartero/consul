@@ -1,0 +1,1 @@
+resources :forks, only: [:index, :show]

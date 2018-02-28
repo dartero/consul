@@ -1,0 +1,19 @@
+<div class="row margin-bottom">
+  <h3><%= @fork.name %></h3>
+
+  <h4>Files changed:</h4>
+  <div>
+    <% @fork.files_changed.each do |filename| %>
+      <div><%= filename %></div>
+    <% end %>
+  </div>
+  <br/>
+
+  <div>
+    <%= link_to "See all changes in Github", @fork.diff_url, target: :_blank %>
+  </div>
+</div>
+
+<div class="row margin-bottom">
+  <%= link_to "Back to all forks", forks_path %>
+</div>
