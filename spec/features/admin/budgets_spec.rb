@@ -123,7 +123,7 @@ feature 'Admin budgets' do
     end
 
     scenario 'Try to destroy a budget with investments' do
-      create(:budget_investment, heading: heading)
+      create(:budget_investment, heading: heading, budget: budget)
 
       visit admin_budgets_path
       click_link 'Edit budget'
