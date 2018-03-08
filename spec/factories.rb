@@ -336,6 +336,14 @@ FactoryBot.define do
     terms_of_service     '1'
     incompatible          false
 
+    after(:create) do |investment|
+      group_budget = investment.group.budget
+      if group_budget != investment.budget
+        investment.group.budget = investment.budget
+        group_budget.destroy
+      end
+    end
+
     trait :with_confidence_score do
       before(:save) { |i| i.calculate_confidence_score }
     end
