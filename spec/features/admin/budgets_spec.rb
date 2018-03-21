@@ -106,6 +106,23 @@ feature 'Admin budgets' do
       expect(page).to have_css("label.error", text: "Name")
     end
 
+    scenario "Copies the last budget's statuses" do
+      budget = create(:budget)
+      status = create(:budget_investment_status, budget: budget)
+
+      visit admin_budgets_path
+      click_link 'Create new budget'
+
+      fill_in 'budget_name', with: 'This is a new budget'
+      select 'Accepting projects', from: 'budget[phase]'
+      click_button 'Create Budget'
+
+      new_budget = Budget.last
+
+      expect(new_budget.statuses.count).to be 1
+      expect(new_budget.statuses.first.name).to have_content(status.name)
+      expect(new_budget.statuses.first.description).to have_content(status.description)
+    end
   end
 
   context 'Destroy' do

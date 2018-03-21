@@ -21,6 +21,7 @@ feature 'Admin budget investment milestones' do
       expect(page).to have_content(milestone.title)
       expect(page).to have_content(milestone.id)
       expect(page).to have_content(milestone.publication_date.to_date)
+      expect(page).to have_content(milestone.status.name)
       expect(page).to have_link 'Show image'
       expect(page).to have_link document.title
     end
