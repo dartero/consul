@@ -1,6 +1,26 @@
 <%= form_for [:admin, @investment.budget, @investment, @milestone] do |f| %>
 
   <%= f.hidden_field :title, value: l(Time.current, format: :datetime), maxlength: Budget::Investment::Milestone.title_max_length %>
+
+  <div class="row">
+    <div class="small-12 medium-6 column">
+      <% if @statuses.any? %>
+        <%= f.select :status_id,
+                     @statuses.collect { |s| [s.name, s.id] },
+                     { include_blank: '' } %>
+      <% else %>
+        <%= f.select :status_id,
+                     {},
+                     { include_blank: t('admin.milestones.form.no_statuses_defined') },
+                     { disabled: true } %>
+      <% end %>
+    </div>
+    <div class="small-12 medium-6 column">
+      <%= link_to t('admin.milestones.form.admin_statuses'),
+                  admin_budget_budget_investment_statuses_path(@investment.budget) %>
+    </div>
+  </div>
+
   <%= f.text_area :description, rows: 5 %>
   <%= f.label :publication_date, t("admin.milestones.new.date") %>
   <%= f.text_field :publication_date,
