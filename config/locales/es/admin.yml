@@ -250,12 +250,16 @@ es:
         table_title: "Título"
         table_description: "Descripción"
         table_publication_date: "Fecha de publicación"
+        table_status: Estado
         table_actions: "Acciones"
         delete: "Eliminar hito"
         no_milestones: "No hay hitos definidos"
         image: "Imagen"
         show_image: "Mostrar imagen"
         documents: "Documentos"
+      form:
+        admin_statuses: Gestionar estados de proyectos
+        no_statuses_defined: No hay estados definidos
       new:
         creating: Crear hito
         date: Fecha
@@ -267,6 +271,26 @@ es:
         notice: Hito actualizado
       delete:
         notice: Hito borrado correctamente
+    statuses:
+      index:
+        title: Estados de proyectos
+        empty_statuses: Aún no se ha creado ningún estado de proyecto
+        new_status: Crear nuevo estado de proyecto
+        table_name: Nombre
+        table_description: Descripción
+        table_actions: Acciones
+        delete: Borrar
+        edit: Editar
+      edit:
+        title: Editar estado de proyecto
+      update:
+        notice: Estado de proyecto editado correctamente
+      new:
+        title: Crear estado de proyecto
+      create:
+        notice: Estado de proyecto creado correctamente
+      delete:
+        notice: Estado de proyecto eliminado correctamente
     comments:
       index:
         filter: Filtro
