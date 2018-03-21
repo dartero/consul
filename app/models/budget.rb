@@ -16,6 +16,7 @@ class Budget < ActiveRecord::Base
   has_many :headings, through: :groups
   has_many :lines, through: :ballots, class_name: 'Budget::Ballot::Line'
   has_many :phases, class_name: Budget::Phase
+  has_many :statuses, class_name: 'Budget::Investment::Status', dependent: :destroy
 
   before_validation :sanitize_descriptions
 
@@ -190,5 +191,3 @@ class Budget < ActiveRecord::Base
     slug.nil? || drafting?
   end
 end
-
-
