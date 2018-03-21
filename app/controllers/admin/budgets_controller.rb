@@ -36,6 +36,7 @@ class Admin::BudgetsController < Admin::BaseController
   def create
     @budget = Budget.new(budget_params)
     if @budget.save
+      load_last_budget_statuses
       redirect_to admin_budget_path(@budget), notice: t('admin.budgets.create.notice')
     else
       render :new
@@ -63,4 +64,11 @@ class Admin::BudgetsController < Admin::BaseController
       @budget = Budget.find_by(slug: params[:id]) || Budget.find_by(id: params[:id])
     end
 
+    def load_last_budget_statuses
+      Budget.last(2).first.statuses.each do |status|
+        new_status = status.dup
+        new_status.update(budget_id: @budget.id)
+        new_status.save
+      end
+    end
 end

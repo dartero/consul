@@ -5,7 +5,7 @@ class Admin::BudgetInvestmentStatusesController < Admin::BaseController
 
 
   def index
-    @statuses = Budget::Investment::Status.all
+    @statuses = Budget::Investment::Status.where(budget_id: @budget.id)
   end
 
   def new
@@ -37,6 +37,7 @@ class Admin::BudgetInvestmentStatusesController < Admin::BaseController
 
   def destroy
     @status.destroy
+    milestones_with_status_only
     redirect_to admin_budget_budget_investment_statuses_path(@budget),
                 notice: t('admin.statuses.delete.notice')
   end
@@ -53,5 +54,11 @@ class Admin::BudgetInvestmentStatusesController < Admin::BaseController
 
   def status_params
     params.require(:budget_investment_status).permit([:name, :description, :budget_id])
+  end
+
+  def milestones_with_status_only
+    @status.milestones.each do |milestone|
+      milestone.destroy unless milestone.description.present?
+    end
   end
 end
