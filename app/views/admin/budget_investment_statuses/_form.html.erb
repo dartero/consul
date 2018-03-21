@@ -1,0 +1,11 @@
+<%= form_for [:admin, @budget, @status] do |f| %>
+  <%= render 'shared/errors', resource: @status %>
+
+  <%= f.hidden_field :budget_id, value: @budget.id %>
+  <%= f.text_field :name %>
+  <%= f.text_area :description %>
+
+  <div class="margin-top">
+    <%= f.submit class: "button success" %>
+  </div>
+<% end %>
