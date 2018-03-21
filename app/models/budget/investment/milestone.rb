@@ -8,9 +8,10 @@ class Budget
                    accepted_content_types: [ "application/pdf" ]
 
       belongs_to :investment
+      belongs_to :status, class_name: 'Budget::Investment::Status'
 
       validates :title, presence: true
-      validates :description, presence: true
+      validates :description, presence: true, unless: :has_status?
       validates :investment, presence: true
       validates :publication_date, presence: true
 
@@ -20,6 +21,9 @@ class Budget
         80
       end
 
+      def has_status?
+        status_id_changed? ? status_id_change[1] != nil : status_id.present?
+      end
     end
   end
 end
