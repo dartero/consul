@@ -48,6 +48,30 @@ describe Budget::Investment::Milestone do
     end
   end
 
+  describe "#description_or_status_present?" do
+    let(:milestone) { build(:budget_investment_milestone) }
+
+    it "is not valid when status is removed & there's no description" do
+      milestone.update(description: nil)
+
+      expect(milestone.update(status_id: nil)).to be false
+    end
+
+    it "is not valid when description is removed & there's no status" do
+      milestone.update(status_id: nil)
+
+      expect(milestone.update(description: nil)).to be false
+    end
+
+    it "is valid when description is removed & there is an status" do
+      expect(milestone.update(description: nil)).to be true
+    end
+
+    it "is valid when status is removed & there is a description" do
+      expect(milestone.update(status_id: nil)).to be true
+    end
+  end
+
   describe "#has_status?" do
     let(:milestone) { build(:budget_investment_milestone) }
 

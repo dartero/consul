@@ -14,8 +14,15 @@ class Budget
       validates :description, presence: true, unless: :has_status?
       validates :investment, presence: true
       validates :publication_date, presence: true
+      validate :description_or_status_present?
 
       scope :order_by_publication_date, -> { order(publication_date: :asc) }
+
+      def description_or_status_present?
+        unless description.present? || status_id.present?
+          errors.add(:description, :description_or_status_presence)
+        end
+      end
 
       def self.title_max_length
         80
