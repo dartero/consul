@@ -658,6 +658,8 @@ es:
       next_slide: Siguiente imagen
     documentation: Documentación adicional
     more_info: Más información
+    recommended_index:
+        title: Recomendaciones
   social:
     blog: "Blog de %{org}"
     facebook: "Facebook de %{org}"
@@ -868,7 +870,7 @@ es:
       organization: Las organizaciones no pueden votar.
       unfeasible: No se pueden votar propuestas inviables.
       not_voting_allowed: El periodo de votación está cerrado.
-      different_heading_assigned: 
+      different_heading_assigned:
         one: "Sólo puedes apoyar proyectos de gasto de %{count} distrito"
         other: "Sólo puedes apoyar proyectos de gasto de %{count} distritos"
   welcome:

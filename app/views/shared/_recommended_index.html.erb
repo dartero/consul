@@ -1,0 +1,17 @@
+<div class="recommended-index">
+  <div class="row" data-equalizer data-equalizer-on="medium">
+    <div class="small-12 column">
+      <h2><%= t("shared.recommended_index.title") %></h2>
+    </div>
+
+    <% recommended.each_with_index do |recommended, index| %>
+      <div class="small-12 medium-6 large-4 column end">
+        <%= link_to recommended_path(recommended) do %>
+          <div class="recommendation" data-equalizer-watch>
+            <h3><%= recommended.title %></h3>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
