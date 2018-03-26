@@ -8,6 +8,7 @@ class ProposalsController < ApplicationController
   before_action :load_geozones, only: [:edit, :map, :summary]
   before_action :authenticate_user!, except: [:index, :show, :map, :summary]
   before_action :destroy_map_location_association, only: :update
+  before_action :proposals_recommendations, only: :index, if: :current_user
 
   feature_flag :proposals
 
@@ -165,5 +166,9 @@ class ProposalsController < ApplicationController
 
     def load_rank
       @proposal_rank ||= Proposal.rank(@proposal)
+    end
+
+    def proposals_recommendations
+      @recommended_proposals = Proposal.recommendations(current_user).sort_by_random.limit(3)
     end
 end
