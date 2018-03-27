@@ -5,6 +5,7 @@ class DebatesController < ApplicationController
 
   before_action :parse_tag_filter, only: :index
   before_action :authenticate_user!, except: [:index, :show, :map]
+  before_action :debates_recommendations, only: :index, if: :current_user
 
   feature_flag :debates
 
@@ -58,4 +59,7 @@ class DebatesController < ApplicationController
       Debate
     end
 
+    def debates_recommendations
+      @recommended_debates = Debate.recommendations(current_user).sort_by_random.limit(3)
+    end
 end

@@ -52,6 +52,8 @@ en:
       legislation: Legislation
       user:
         recommendations: Recommendeds
+        recommendations_on_debates: Recommendeds on debates
+        recommendations_on_proposals: Recommendeds on proposals
       community: Community on proposals and investments
       map: Proposals and budget investments geolocation
       allow_images: Allow upload and show images
