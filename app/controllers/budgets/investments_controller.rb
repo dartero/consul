@@ -6,7 +6,7 @@ module Budgets
 
     before_action :authenticate_user!, except: [:index, :show, :redirect_to_new_url, :json_data]
     before_action :load_budget, except: [:redirect_to_new_url, :json_data]
-    before_action :load_investment, only: [:show]
+    before_action :load_investment, only: [:show, :json_data]
 
     load_and_authorize_resource :budget, except: [:redirect_to_new_url, :json_data]
     load_and_authorize_resource :investment, through: :budget, class: "Budget::Investment", except: [:redirect_to_new_url, :json_data]
@@ -89,11 +89,10 @@ module Budgets
     end
 
     def json_data
-      investment =  Budget::Investment.find(params[:id])
       data = {
-        investment_id: investment.id,
-        investment_title: investment.title,
-        budget_id: investment.budget.id
+        investment_id: @investment.id,
+        investment_title: @investment.title,
+        budget_id: @investment.budget.id
       }.to_json
 
       respond_to do |format|
