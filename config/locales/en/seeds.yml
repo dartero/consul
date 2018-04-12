@@ -53,3 +53,15 @@ en:
       recounting_poll: "Recounting Poll"
       expired_poll_without_stats: "Expired Poll without Stats & Results"
       expired_poll_with_stats: "Expired Poll with Stats & Results"
+    proposals:
+      pedestrian_streets:
+        title: 'Make pedestrian streets downtown'
+        summary: 'Pedestrianize all downtown streets, closing them to all types of traffic. Resident cars excluded.'
+      dogs_park:
+        title: 'Create a park for dogs'
+        summary: 'Dogs need space to gather and walk freely, downtown park has enough space to create a fenced area for them.'
+    proposal_notifications:
+      updated_notice:
+        body : "Hi,\r\nI've updated the proposal with your suggestions.\r\nThank you all for your comments!."
+      congratulations:
+        body: "We did it!!\r\nThanks to everyone that supported this proposal and contributed to make it happen."

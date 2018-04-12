@@ -53,3 +53,15 @@ es:
       recounting_poll: "Votación en Recuento"
       expired_poll_without_stats: "Votación Finalizada (sin Estadísticas o Resultados)"
       expired_poll_with_stats: "Votación Finalizada (con Estadísticas y Resultado)"
+    proposals:
+      pedestrian_streets:
+        title: 'Hacer las calles del centro peatonales'
+        summary: 'Peatonalizar todas las calles del centro de, cerrándolas a todo tipo de tráfico. Coches de residentes excluidos.'
+      dogs_park:
+        title: 'Crear un parque para perros'
+        summary: 'Los perros necesitan espacio para juntarse y caminar libres, en el parque del centro hay espacio de sobra para hacer un recinto vallado.'
+    proposal_notifications:
+      updated_notice:
+        body: "Hola,\r\nHe actualizado la propuesta con vuestras sugerencias.\r\n¡Muchas gracias por vuestros comentarios!."
+      congratulations:
+        body: "¡¡Lo conseguimos!!\r\nGracias a todos los que apoyasteis y contribuisteis para hacer que esta propuesta se convirtiese en realidad."
