@@ -286,6 +286,12 @@ class Budget
       vote_by(voter: user, vote: 'yes') if selectable_by?(user)
     end
 
+    def record_heading_support(user)
+      unless heading.already_supported_by_user?(user.id)
+        Budget::Heading::Support.create(user: user, budget_heading: heading)
+      end
+    end
+
     def calculate_confidence_score
       self.confidence_score = ScoreCalculator.confidence_score(total_votes, total_votes)
     end

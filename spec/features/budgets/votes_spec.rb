@@ -172,5 +172,31 @@ feature 'Votes' do
       end
 
     end
+
+    context "User supports in a group heading" do
+      scenario "should record the heading support the first time" do
+        login_as(@manuela)
+        budget.update(phase: "selecting")
+        investment = create(:budget_investment, budget: budget, heading: heading)
+
+        visit budget_investment_path(budget, investment)
+        find('.in-favor a').click
+
+        expect(Budget::Heading::Support.all.count).to be(1)
+      end
+
+      scenario "should not record the heading support again if it was supported before" do
+        login_as(@manuela)
+        budget.update(phase: "selecting")
+        investment1 = create(:budget_investment, budget: budget, heading: heading)
+        investment2 = create(:budget_investment, budget: budget, heading: heading)
+        create(:vote, votable: investment2)
+
+        visit budget_investment_path(budget, investment1)
+        find('.in-favor a').click
+
+        expect(Budget::Heading::Support.all.count).to be(1)
+      end
+    end
   end
 end

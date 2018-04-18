@@ -70,6 +70,7 @@ module Budgets
 
     def vote
       @investment.register_selection(current_user)
+      @investment.record_heading_support(current_user)
       load_investment_votes(@investment)
       respond_to do |format|
         format.html { redirect_to budget_investments_path(heading_id: @investment.heading.id) }
@@ -196,6 +197,5 @@ module Budgets
                       .send("sort_by_#{@current_order}")
         end
       end
-
   end
 end
