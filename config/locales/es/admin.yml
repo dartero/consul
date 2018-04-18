@@ -652,6 +652,24 @@ es:
         title: Resumen de Notificationes de Propuestas
         description: Reune todas las notificaciones de propuestas en un único mensaje, para evitar demasiados emails.
         preview_detail: Los usuarios sólo recibirán las notificaciones de aquellas propuestas que siguen.
+      budget_investment_selected:
+        title: Proyecto de Inversión seleccionado
+        description: Mensaje que recibe el autor de un proyecto de inversión cuando es seleccionado
+      budget_investment_unselected:
+        title: Proyecto de Inversión no seleccionado
+        description: Mensaje que recibe el autor de un proyecto de inversión cuando no es seleccionado
+      budget_investment_created:
+        title: Nuevo proyecto de inversión
+        description: Mensaje que recibe el autor de un proyecto de inversión recién creado
+      budget_investment_unfeasible:
+        title: Proyecto de inversión rechazado
+        description: Mensaje que recibe el autor de un proyecto de inversión que ha sido rechazado
+      user_invite:
+        title: Invitación de usuario
+        description: Mensaje que se recibe por email como invitación a registrarse en la plataforma
+      email_verification:
+        title: Email de verificación
+        description: Mensaje que se recibe para verificar el email de un nuevo usuario registrado
     emails_download:
       index:
         title: Descarga de emails

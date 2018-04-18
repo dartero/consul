@@ -4,7 +4,13 @@ class Admin::SystemEmailsController < Admin::BaseController
 
   def index
     @system_emails = {
-      proposal_notification_digest: %w(view preview_pending)
+      proposal_notification_digest: %w(view preview_pending),
+      budget_investment_selected: %w(view),
+      budget_investment_unselected: %w(view),
+      budget_investment_created: %w(view),
+      budget_investment_unfeasible: %w(view),
+      user_invite: %w(view),
+      email_verification: %w(view)
     }
   end
 
@@ -13,6 +19,26 @@ class Admin::SystemEmailsController < Admin::BaseController
     when "proposal_notification_digest"
       @notifications = dummy_proposal_notifications
       @subject = t('mailers.proposal_notification_digest.title', org_name: Setting['org_name'])
+    when "budget_investment_selected"
+      @investment = Budget::Investment.last
+      @subject = t('mailers.budget_investment_selected.subject', code: @investment.code)
+    when "budget_investment_unselected"
+      @investment = Budget::Investment.last
+      @subject = t('mailers.budget_investment_unselected.subject', code: @investment.code)
+    when "budget_investment_created"
+      @investment = Budget::Investment.last
+      @subject = t('mailers.budget_investment_created.subject')
+    when "budget_investment_unfeasible"
+      @investment = Budget::Investment.last
+      @subject = t('mailers.budget_investment_unfeasible.subject', code: @investment.code)
+    when "user_invite"
+      @investment = Budget::Investment.last
+      @subject = t('mailers.user_invite.subject', org_name: Setting['org_name'])
+    when "email_verification"
+      @document_number = '12345678Z'
+      @document_type = '2'
+      @token = 'asdfghjklzxcvbnmqwertyuiop'
+      @subject = t('mailers.email_verification.subject')
     end
   end
 

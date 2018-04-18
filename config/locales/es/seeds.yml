@@ -46,6 +46,10 @@ es:
         bidding: Licitación
         executing_project: Ejecutando el proyecto
         executed: Ejecutado
+      investments:
+        open_source:
+          title: Usar software OpenSource en las administraciones publicas
+          description: El software de código abierto debería estar en todas las administraciones. ¡Queremos software reusable, auditable, extensible y contribuible!
     polls:
       current_poll: "Votación Abierta"
       current_poll_geozone_restricted: "Votación Abierta restringida por geozona"

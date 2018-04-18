@@ -46,6 +46,10 @@ en:
         bidding: Bidding
         executing_project: Executing the project
         executed: Executed
+      investments:
+        open_source:
+          title: Use Open Source in public administrations
+          description: OpenSource software in all administrations. We want reusable, auditable, extensible and contributable code!
     polls:
       current_poll: "Current Poll"
       current_poll_geozone_restricted: "Current Poll Geozone Restricted"

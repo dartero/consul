@@ -652,6 +652,24 @@ en:
         title: Proposal Notification Digest
         description: Gathers all proposal notifications for an user in a single message, to avoid too much emails.
         preview_detail: Users will only recieve notifications from the proposals they are following
+      budget_investment_selected:
+        title: Selected Budget Investment
+        description: Message sent to the author of a budget investments when it is selected
+      budget_investment_unselected:
+        title: Unselected Budget Investment
+        description: Message sent to the author of a budget investments when it is not selected
+      budget_investment_created:
+        title: Budget Investment created
+        description: Message sent to the author of a new Budget Investment
+      budget_investment_unfeasible:
+        title: Unfeasible Budget Investment
+        description: Message sent to the author of a Budget Investment when it is rejected
+      user_invite:
+        title: User Invitation
+        description: Message sent to an email address as invitation to join the platform
+      email_verification:
+        title: Verification Email
+        description: Message sent to verify the email form a new registered user
     emails_download:
       index:
         title: Emails download
