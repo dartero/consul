@@ -57,11 +57,7 @@ class Admin::BudgetInvestmentMilestonesController < Admin::BaseController
   end
 
   def load_budget_investment_milestone
-    @milestone = get_milestone
-  end
-
-  def get_milestone
-    Budget::Investment::Milestone.find(params[:id])
+    @milestone = resource
   end
 
   def load_statuses
@@ -73,7 +69,7 @@ class Admin::BudgetInvestmentMilestonesController < Admin::BaseController
   end
 
   def resource
-    get_milestone
+    resource_model.find(params[:id])
   end
 
 end
