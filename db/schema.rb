@@ -165,7 +165,6 @@ ActiveRecord::Schema.define(version: 20180323190027) do
     t.string   "locale",                         null: false
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.string   "title"
     t.text     "description"
   end
 
