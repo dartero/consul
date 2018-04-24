@@ -61,6 +61,7 @@ feature 'Voters' do
     expect(user).not_to be_level_two_verified
 
     visit root_path
+    click_link officer.user.username
     click_link "Sign out"
     login_through_form_as_officer(officer.user)
 
@@ -199,6 +200,7 @@ feature 'Voters' do
        officer_assignment = create(:poll_officer_assignment, officer: officer, booth_assignment: booth_assignment)
 
        visit root_path
+       click_link officer.user.username
        click_link "Sign out"
        login_through_form_as_officer(officer.user)
 

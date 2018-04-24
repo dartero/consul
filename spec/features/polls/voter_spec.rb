@@ -104,6 +104,7 @@ feature "Voter" do
       expect(Poll::Voter.first.origin).to eq("booth")
 
       visit root_path
+      click_link officer.user.username
       click_link "Sign out"
       login_as(admin.user)
       visit admin_poll_recounts_path(poll)
@@ -125,6 +126,7 @@ feature "Voter" do
         vote_for_poll_via_web(poll, question, answer_yes.title)
         expect(Poll::Voter.count).to eq(1)
 
+        click_link user.username
         click_link "Sign out"
 
         login_through_form_as_officer(officer.user)
@@ -143,6 +145,7 @@ feature "Voter" do
         vote_for_poll_via_booth
 
         visit root_path
+        click_link officer.user.username
         click_link "Sign out"
 
         login_as user
@@ -153,6 +156,7 @@ feature "Voter" do
         expect(Poll::Voter.count).to eq(1)
 
         visit root_path
+        click_link user.username
         click_link "Sign out"
         login_as(admin.user)
         visit admin_poll_recounts_path(poll)
@@ -180,6 +184,7 @@ feature "Voter" do
           expect(page).not_to have_link(answer_yes.title)
         end
 
+        click_link user.username
         click_link "Sign out"
 
         login_as user
@@ -199,6 +204,7 @@ feature "Voter" do
       vote_for_poll_via_booth
 
       visit root_path
+      click_link officer.user.username
       click_link "Sign out"
 
       login_as user
@@ -215,6 +221,7 @@ feature "Voter" do
       expect(Poll::Voter.count).to eq(1)
 
       visit root_path
+      click_link user.username
       click_link "Sign out"
       login_as(admin.user)
       visit admin_poll_recounts_path(poll)

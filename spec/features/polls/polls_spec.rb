@@ -426,6 +426,7 @@ feature 'Polls' do
       expect(page).not_to have_link('Han Solo')
       expect(page).to have_link('Chewbacca')
 
+      click_link user.username
       click_link "Sign out"
       login_as user
       visit poll_path(poll)
@@ -434,6 +435,7 @@ feature 'Polls' do
       expect(page).not_to have_link('Han Solo')
       expect(page).to have_link('Chewbacca')
 
+      click_link user.username
       click_link "Sign out"
       login_as user
       visit poll_path(poll)
@@ -474,6 +476,7 @@ feature 'Polls' do
       expect(page).to have_content "Vote introduced!"
 
       visit new_officing_residence_path
+      click_link officer.user.username
       click_link "Sign out"
       login_as user
       visit poll_path(poll)

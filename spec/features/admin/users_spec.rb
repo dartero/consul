@@ -26,10 +26,12 @@ feature 'Admin users' do
     fill_in :search, with: "Luis"
     click_button 'Search'
 
-    expect(page).to have_content @user.name
-    expect(page).to have_content @user.email
-    expect(page).not_to have_content @admin.name
-    expect(page).not_to have_content @admin.email
+    within("#users") do
+      expect(page).to have_content @user.name
+      expect(page).to have_content @user.email
+      expect(page).not_to have_content @admin.name
+      expect(page).not_to have_content @admin.email
+    end
   end
 end
 
