@@ -52,8 +52,12 @@ module UsersHelper
     current_user && current_user.manager?
   end
 
+  def current_officer?
+    current_user && current_user.poll_officer? && Poll.current.any?
+  end
+
   def show_admin_menu?
-    current_administrator? || current_moderator? || current_valuator? || current_manager?
+    current_administrator? || current_moderator? || current_valuator? || current_manager? || current_officer?
   end
 
   def interests_title_text(user)

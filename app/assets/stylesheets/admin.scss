@@ -58,6 +58,12 @@ $sidebar-active: #f4fcd0;
       box-shadow: 0 2px 2px #eee;
     }
 
+    @include breakpoint(small down) {
+      ul {
+        display: inline-block;
+      }
+    }
+
     [class^="icon-"]:not(.icon-circle) {
       font-size: $base-font-size;
     }
@@ -94,11 +100,17 @@ $sidebar-active: #f4fcd0;
 
     @include breakpoint(medium) {
       height: auto !important;
-      padding-top: $line-height / 2;
     }
 
-    a {
+    a:not(.sign-out) {
       color: #000 !important;
+    }
+  }
+
+  .top-bar-left {
+
+    @include breakpoint(medium) {
+      padding-top: $line-height / 2;
     }
   }
 

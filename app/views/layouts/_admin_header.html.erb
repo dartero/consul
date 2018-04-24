@@ -25,15 +25,26 @@
         </ul>
       </div>
 
-      <div id="responsive_menu">
-        <div class="top-bar-right">
-          <ul class="dropdown menu" data-dropdown-menu>
-            <%= render "admin/shared/admin_shortcuts" %>
-            <%= render "shared/admin_login_items" %>
-            <%= render "layouts/notification_item" %>
-            <%= render "devise/menu/login_items" %>
-          </ul>
-        </div>
+      <div id="responsive_menu" class="top-bar-right">
+        <ul class="dropdown menu" data-responsive-menu="medium-dropdown">
+          <%= render "admin/shared/admin_shortcuts" %>
+          <%= render "layouts/notification_item" %>
+
+          <li class="has-submenu">
+            <%= link_to "#", rel: "nofollow", class: "hide-for-small-only" do %>
+              <strong><%= current_user.name %></strong>
+            <% end %>
+
+            <ul class="submenu menu vertical" data-submenu>
+              <%= render "devise/menu/login_items" %>
+              <%= render "shared/admin_login_items" %>
+              <li class="sign-out">
+                <%= link_to t("devise_views.menu.login_items.logout"),
+                            destroy_user_session_path, rel: "nofollow", method: :delete, class: "sign-out" %>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
