@@ -276,7 +276,7 @@ feature 'Votes' do
         budget.update(phase: "selecting")
         investment1 = create(:budget_investment, budget: budget, heading: heading)
         investment2 = create(:budget_investment, budget: budget, heading: heading)
-        create(:vote, votable: investment2)
+        create(:vote, votable: investment2, voter: @manuela)
 
         visit budget_investment_path(budget, investment1)
         find('.in-favor a').click
