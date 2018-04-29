@@ -46,6 +46,36 @@ describe Signature do
     end
   end
 
+  describe "exists?" do
+
+    it "returns false if signature does not exist for a document number" do
+      expect(signature.exists?).to eq(false)
+    end
+
+    it "returns true if signature exists for an exact document number" do
+      investment = create(:budget_investment)
+
+      signature_sheet = create(:signature_sheet, signable: investment)
+      existing_signature = create(:signature, document_number: "12345678Z", signature_sheet: signature_sheet)
+
+      new_signature = build(:signature, document_number: "12345678Z", signature_sheet: signature_sheet)
+
+      expect(new_signature.exists?).to eq(true)
+    end
+
+    it "returns true if signature exists for same document number without letter" do
+      investment = create(:budget_investment)
+
+      signature_sheet = create(:signature_sheet, signable: investment)
+      existing_signature = create(:signature, document_number: "12345678Z", signature_sheet: signature_sheet)
+
+      new_signature = build(:signature, document_number: "12345678", signature_sheet: signature_sheet)
+
+      expect(new_signature.exists?).to eq(true)
+    end
+
+  end
+
   describe "#verify" do
 
     describe "existing user" do
@@ -124,6 +154,21 @@ describe Signature do
 
         signature_sheet = create(:signature_sheet, signable: investment)
         signature = create(:signature, document_number: user.document_number, signature_sheet: signature_sheet)
+
+        expect(Vote.count).to eq(1)
+
+        signature.verify
+
+        expect(Vote.count).to eq(1)
+      end
+
+      it "does not assign vote to user if already voted on budget investment (same document number without letter)", :focus do
+        investment = create(:budget_investment)
+        user = create(:user, :level_two, document_number: "12345678")
+        vote = create(:vote, votable: investment, voter: user)
+
+        signature_sheet = create(:signature_sheet, signable: investment)
+        signature = create(:signature, document_number: "12345678Z", signature_sheet: signature_sheet)
 
         expect(Vote.count).to eq(1)
 

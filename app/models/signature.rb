@@ -13,6 +13,8 @@ class Signature < ActiveRecord::Base
   before_validation :clean_document_number
 
   def verify
+    return if exists?
+
     if user_exists?
       assign_vote_to_user
       mark_as_verified
@@ -21,6 +23,11 @@ class Signature < ActiveRecord::Base
       assign_vote_to_user
       mark_as_verified
     end
+  end
+
+  def exists?
+    Signature.where(signature_sheet: signature_sheet)
+             .where("document_number like ?", "#{document_number_without_letter}%").any?
   end
 
   def assign_vote_to_user
@@ -93,5 +100,11 @@ class Signature < ActiveRecord::Base
   def document_types
     %w(1 2 3 4)
   end
+
+  private
+
+    def document_number_without_letter
+      document_number.gsub(/[A-Za-z]/, "")
+    end
 
 end
