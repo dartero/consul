@@ -54,18 +54,18 @@ module DocumentParser
   # ['1234a', '1234A', '01234a', '01234A']
   def get_letter_variants(number_variants, letter)
     variants = []
-    if letter.present?
-      number_variants.each do |number|
-        variants << number + letter.downcase << number + letter.upcase
-      end
-    else
+    #if letter.present?
+    #  number_variants.each do |number|
+    #    variants << number + letter.downcase << number + letter.upcase
+    #  end
+    #else
       spanish_id_eight_digits = format_spanish_id_digits(number_variants.first)
       letter = generate_letter(spanish_id_eight_digits)
 
       number_variants.each do |number|
         variants << number + letter.downcase << number + letter.upcase
       end
-    end
+    #end
     variants
   end
 
