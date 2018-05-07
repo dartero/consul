@@ -24,7 +24,11 @@ class Signature < ActiveRecord::Base
   end
 
   def find_or_create_user?
+    puts "**************** START DEBUG ********************"
+    puts self.inspect
+    puts "find_user: #{find_user}"
     self.user = find_user || create_user
+    puts "**************** END DEBUG ********************"
   end
 
   def find_user
