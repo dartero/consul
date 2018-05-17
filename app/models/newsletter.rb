@@ -25,7 +25,8 @@ class Newsletter < ActiveRecord::Base
     list_of_recipient_emails_in_batches.each do |recipient_emails|
       recipient_emails.each do |recipient_email|
         if valid_email?(recipient_email)
-          puts recipient_email
+          user = User.where(email: recipient_email).first
+          Activity.log(user, :email, self)
         end
       end
       run_at += batch_interval
