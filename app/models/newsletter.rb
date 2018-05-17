@@ -24,7 +24,9 @@ class Newsletter < ActiveRecord::Base
     run_at = first_batch_run_at
     list_of_recipient_emails_in_batches.each do |recipient_emails|
       recipient_emails.each do |recipient_email|
-puts recipient_email
+        if valid_email?(recipient_email)
+          puts recipient_email
+        end
       end
       run_at += batch_interval
     end
@@ -50,5 +52,9 @@ puts recipient_email
 
   def validate_segment_recipient
     errors.add(:segment_recipient, :invalid) unless valid_segment_recipient?
+  end
+
+  def valid_email?(email)
+    email.match(/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i)
   end
 end
