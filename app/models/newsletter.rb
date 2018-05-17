@@ -24,7 +24,7 @@ class Newsletter < ActiveRecord::Base
     run_at = first_batch_run_at
     list_of_recipient_emails_in_batches.each do |recipient_emails|
       recipient_emails.each do |recipient_email|
-        Mailer.delay(run_at: run_at).newsletter(self, recipient_email)
+puts recipient_email
       end
       run_at += batch_interval
     end
